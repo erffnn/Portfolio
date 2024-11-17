@@ -1,39 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Portfolio</title>
+    <title>Erfan Omidi - Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
             background-color: #f4f4f9;
         }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        a {
             color: #007acc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Portfolio</h1>
-    <p>Hi, I'm Erfan, a passionate programmer and tech enthusiast.</p>
-    <nav>
-        <a href="#about">About Me</a> | 
-        <a href="#projects">Projects</a> | 
-        <a href="#contact">Contact</a>
-    </nav>
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am skilled in programming, web development, and problem-solving. Let's create something amazing together!</p>
-    </section>
-    <section id="projects">
-        <h2>Projects</h2>
-        <p>Check out my <a href="https://github.com/erffnn" target="_blank">GitHub</a> for more projects!</p>
-    </section>
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: erfan_o@yahoo.com</p>
-    </section>
+    <header>
+        <h1>Erfan Omidi</h1>
+        <p>Computer Programming Student</p>
+    </header>
+    <div class="container">
+        <section id="summary">
+            <h2>About Me</h2>
+            <p>Eager Computer Programming student with hands-on experience in Java, C#, and Python. Developed multiple mobile and desktop applications using Android Studio, Java Swing, and Swift Playground. Currently seeking an internship to apply my technical skills, gain practical experience, and contribute to innovative projects.</p>
+        </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li><strong>Languages:</strong> Java, C#, Python, Swift</li>
+                <li><strong>Tools:</strong> Android Studio, Java Swing, Git, Swift Playground</li>
+                <li><strong>Concepts:</strong> Object-Oriented Programming (OOP), Algorithms, UI/UX Design</li>
+                <li><strong>Soft Skills:</strong> Problem-solving, Teamwork, Adaptability</li>
+                <li><strong>Languages:</strong> Fluent in English, Persian, and decent French</li>
+            </ul>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <ul>
+                <li><strong>Java Swing Interface Redesign:</strong> Redesigned a desktop application UI using Java Swing, improving user experience and code efficiency.</li>
+                <li><strong>Android Calculator App:</strong> Developed a mobile calculator app using Android Studio, implementing core functions such as decimals, percentages, and negative numbers.</li>
+                <li><strong>Swift Playground Projects:</strong> Built beginner-level apps in Swift Playground, focusing on loops, conditionals, and algorithmic problem-solving.</li>
+            </ul>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:erfan-o@yahoo.com">erfan-o@yahoo.com</a></p>
+            <p>Phone: 438-728-6562</p>
+            <p>Address: 2021 Atwater Av, Apt 2005, H3H2P2, Montreal, Quebec</p>
+            <p><a href="https://linktr.ee/Erfuun">Linktree Profile</a></p>
+        </section>
+    </div>
 </body>
 </html>
