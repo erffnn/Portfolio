@@ -1,77 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Erfan Omidi - Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            background-color: #f4f4f9;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
-        }
-        section {
-            margin-bottom: 20px;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        a {
-            color: #007acc;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Erfan Omidi</h1>
-        <p>Computer Programming Student</p>
-    </header>
-    <div class="container">
-        <section id="summary">
-            <h2>About Me</h2>
-            <p>Eager Computer Programming student with hands-on experience in Java, C#, and Python. Developed multiple mobile and desktop applications using Android Studio, Java Swing, and Swift Playground. Currently seeking an internship to apply my technical skills, gain practical experience, and contribute to innovative projects.</p>
-        </section>
-        <section id="skills">
-            <h2>Skills</h2>
+        <nav>
             <ul>
-                <li><strong>Languages:</strong> Java, C#, Python, Swift</li>
-                <li><strong>Tools:</strong> Android Studio, Java Swing, Git, Swift Playground</li>
-                <li><strong>Concepts:</strong> Object-Oriented Programming (OOP), Algorithms, UI/UX Design</li>
-                <li><strong>Soft Skills:</strong> Problem-solving, Teamwork, Adaptability</li>
-                <li><strong>Languages:</strong> Fluent in English, Persian, and decent French</li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
+        </nav>
+        <h1>Welcome to My Portfolio</h1>
+        <p>Hi, I'm Erfan Omidi. A passionate programmer and tech enthusiast.</p>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I’m a Computer Programming student with hands-on experience in Java, C#, and Python.
+                I love building efficient, user-friendly applications and collaborating on exciting projects.
+            </p>
         </section>
+
         <section id="projects">
             <h2>Projects</h2>
-            <ul>
-                <li><strong>Java Swing Interface Redesign:</strong> Redesigned a desktop application UI using Java Swing, improving user experience and code efficiency.</li>
-                <li><strong>Android Calculator App:</strong> Developed a mobile calculator app using Android Studio, implementing core functions such as decimals, percentages, and negative numbers.</li>
-                <li><strong>Swift Playground Projects:</strong> Built beginner-level apps in Swift Playground, focusing on loops, conditionals, and algorithmic problem-solving.</li>
-            </ul>
+            <div class="project">
+                <h3>Halloween Finder</h3>
+                <img src="halloween-finder-screenshot.png" alt="Halloween Finder Screenshot" style="width:100%; max-width:600px;">
+                <p>A fun project to locate spooky Halloween events near you! Built with a focus on user experience and intuitive design.</p>
+                <a href="https://github.com/erffnn/Halloween.Finder" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project">
+                <h3>Local Inn Reservation System (LIRS)</h3>
+                <img src="local-inn-reservation-screenshot.png" alt="Local Inn Reservation System Screenshot" style="width:100%; max-width:600px;">
+                <p>A Python-based reservation system for managing bookings at a local inn. Includes features like room availability checks and user-friendly navigation.</p>
+                <a href="https://github.com/erffnn/Local-Inn-Reservation-system-LIRS" target="_blank">View on GitHub</a>
+            </div>
         </section>
+
+        <section id="resume">
+            <h2>Resume</h2>
+            <p>Download my resume for more details about my skills and experience.</p>
+            <a href="Erfan_Omidi_Resume.pdf" download>Download Resume</a>
+        </section>
+
         <section id="contact">
             <h2>Contact</h2>
-            <p>Email: <a href="mailto:erfan-o@yahoo.com">erfan-o@yahoo.com</a></p>
-            <p>Phone: 438-728-6562</p>
-            <p>Address: 2021 Atwater Av, Apt 2005, H3H2P2, Montreal, Quebec</p>
-            <p><a href="https://linktr.ee/Erfuun">Linktree Profile</a></p>
+            <form action="https://formsubmit.co/your-email@example.com" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Send</button>
+            </form>
+            <p>Or reach out directly:</p>
+            <ul>
+                <li><a href="mailto:erfan_o@yahoo.com">erfan-o@yahoo.com</a></li>
+                <li><a href="https://www.linkedin.com/in/erfan-omidi-84908a255/" target="_blank">LinkedIn</a></li>
+                <li><a href="https://github.com/erffnn" target="_blank">GitHub</a></li>
+            </ul>
         </section>
-    </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Erfan Omidi. All rights reserved.</p>
+    </footer>
 </body>
 </html>
