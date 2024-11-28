@@ -1,65 +1,113 @@
+/* General Body Styles */
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
-}
-
-header {
-    background: #333;
-    color: #fff;
-    padding: 20px;
+    background-color: #f9f9f9;
+    background-image: url('background-pattern.jpg'); /* Add your background pattern here */
+    color: #000000;
     text-align: center;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-main {
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
 }
 
-section {
+/* Profile Section */
+.profile-pic img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 5px solid #007acc;
     margin-bottom: 20px;
 }
 
-.project img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    display: block;
+.profile h1 {
+    font-size: 24px;
     margin: 10px 0;
 }
 
-form label {
-    display: block;
-    margin: 10px 0 5px;
+.profile span {
+    color: #000000;
+    font-weight: bold;
 }
 
-form input, form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+.profile p {
+    font-size: 16px;
+    color: #666;
 }
 
-form button {
-    padding: 10px 15px;
-    background: #333;
+/* About Me Section */
+.about h2 {
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.about-box {
+    border: 2px solid #007acc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+.about-box p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Grid Layout */
+.grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Adds space between columns */
+    margin-top: 30px;
+}
+
+/* Left and Right Columns */
+.left-column,
+.right-column {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adds space between boxes */
+}
+
+/* Box Styling */
+.box {
+    border: 2px solid #007acc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%; /* Ensures all boxes take full column width */
+    min-height: 200px; /* Sets a consistent height for all sections */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Buttons */
+button {
+    background-color: #007acc;
     color: #fff;
     border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
     cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #005f99;
+    transform: scale(1.05);
 }

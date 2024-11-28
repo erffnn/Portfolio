@@ -7,75 +7,63 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <h1>Welcome to My Portfolio</h1>
-        <p>Hi, I'm Erfan Omidi. A passionate programmer and tech enthusiast.</p>
-    </header>
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile">
+            <div class="profile-pic">
+                <img src="your-photo.jpg" alt="Erfan Omidi">
+            </div>
+            <h1>Hello, I am <span>Erfan Omidi</span></h1>
+            <p>Your go-to person for building efficient, user-friendly software solutions.</p>
+        </div>
 
-    <main>
-        <section id="about">
+        <!-- About Me Section -->
+        <div class="about">
             <h2>About Me</h2>
-            <p>
-                I’m a Computer Programming student with hands-on experience in Java, C#, and Python.
-                I love building efficient, user-friendly applications and collaborating on exciting projects.
-            </p>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>Halloween Finder</h3>
-                <img src="halloween-finder-screenshot.png" alt="Halloween Finder Screenshot" style="width:100%; max-width:600px;">
-                <p>A fun project to locate spooky Halloween events near you! Built with a focus on user experience and intuitive design.</p>
-                <a href="https://github.com/erffnn/Halloween.Finder" target="_blank">View on GitHub</a>
+            <div class="about-box">
+                <p>
+                    I’m a Computer Programming student with expertise in Java, Python, and C#. 
+                    I specialize in creating scalable and efficient solutions with a focus on user experience.
+                    With a strong foundation in programming and collaboration skills, I aim to contribute to impactful projects.
+                </p>
             </div>
-            <div class="project">
-                <h3>Local Inn Reservation System (LIRS)</h3>
-                <img src="local-inn-reservation-screenshot.png" alt="Local Inn Reservation System Screenshot" style="width:100%; max-width:600px;">
-                <p>A Python-based reservation system for managing bookings at a local inn. Includes features like room availability checks and user-friendly navigation.</p>
-                <a href="https://github.com/erffnn/Local-Inn-Reservation-system-LIRS" target="_blank">View on GitHub</a>
+        </div>
+
+        <!-- Grid Layout -->
+        <div class="grid">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Contact Section -->
+                <div class="box">
+                    <h3>Contact Me:</h3>
+                    <button onclick="window.location.href='tel:+14387286562'">Call Me!</button>
+                    <button onclick="window.location.href='mailto:erfan-o@yahoo.com'">Email Me!</button>
+                </div>
+
+                <!-- Resume Section -->
+                <div class="box">
+                    <h3>Resume:</h3>
+                    <button onclick="window.location.href='Erfan_Omidi_Resume.pdf'">English Resume</button>
+                </div>
             </div>
-        </section>
 
-        <section id="resume">
-            <h2>Resume</h2>
-            <p>Download my resume for more details about my skills and experience.</p>
-            <a href="Erfan_Omidi_Resume.pdf" download>Download Resume</a>
-        </section>
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Socials Section -->
+                <div class="box">
+                    <h3>Socials:</h3>
+                    <button onclick="window.location.href='https://www.linkedin.com/in/erfan-omidi-84908a255/'">LinkedIn</button>
+                    <button onclick="window.location.href='https://github.com/erffnn'">GitHub</button>
+                </div>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <form action="https://formsubmit.co/your-email@example.com" method="POST">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-
-                <button type="submit">Send</button>
-            </form>
-            <p>Or reach out directly:</p>
-            <ul>
-                <li><a href="mailto:erfan_o@yahoo.com">erfan-o@yahoo.com</a></li>
-                <li><a href="https://www.linkedin.com/in/erfan-omidi-84908a255/" target="_blank">LinkedIn</a></li>
-                <li><a href="https://github.com/erffnn" target="_blank">GitHub</a></li>
-            </ul>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Erfan Omidi. All rights reserved.</p>
-    </footer>
+                <!-- Projects Section -->
+                <div class="box">
+                    <h3>Projects:</h3>
+                    <button onclick="window.location.href='https://github.com/erffnn/Halloween.Finder'">Halloween Finder</button>
+                    <button onclick="window.location.href='https://github.com/erffnn/Local-Inn-Reservation-system-LIRS'">LIRS Project</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
