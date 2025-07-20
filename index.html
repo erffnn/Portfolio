@@ -3,67 +3,1324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erfan Omidi - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Professional Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --glow: 0 0 30px rgba(99, 102, 241, 0.3);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-light);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            color: var(--text-muted);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--glow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: -1s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: -3s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: -5s;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .profile-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--gradient);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        /* Programming Skills Chart Section */
+        .programming-skills {
+            margin-top: 4rem;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .programming-skills h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skills-chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .skill-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .skill-name {
+            font-weight: bold;
+            color: var(--text-light);
+        }
+
+        .skill-percentage {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 4px;
+            transition: width 2s ease-in-out;
+            width: 0;
+        }
+
+        .skill-progress.animate {
+            width: var(--progress-width);
+        }
+
+        .circular-chart {
+            display: block;
+            margin: 10px auto;
+            max-width: 80%;
+            max-height: 250px;
+        }
+
+        .circle-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 3.8;
+        }
+
+        .circle {
+            fill: none;
+            stroke-width: 2.8;
+            stroke-linecap: round;
+            animation: progress 1s ease-out forwards;
+        }
+
+        .circle.java { stroke: #f89820; }
+        .circle.csharp { stroke: #239120; }
+        .circle.python { stroke: #3776ab; }
+        .circle.swift { stroke: #fa7343; }
+
+        @keyframes progress {
+            0% {
+                stroke-dasharray: 0 100;
+            }
+        }
+
+        .percentage {
+            fill: var(--text-light);
+            font-family: sans-serif;
+            font-size: 0.5em;
+            text-anchor: middle;
+        }
+
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-color.java { background: #f89820; }
+        .legend-color.csharp { background: #239120; }
+        .legend-color.python { background: #3776ab; }
+        .legend-color.swift { background: #fa7343; }
+        .legend-color.javascript { background: #f7df1e; }
+
+        .circle-segment {
+            animation: drawSegment 2s ease-out forwards;
+            opacity: 0;
+        }
+
+        .java-segment { animation-delay: 0.2s; }
+        .python-segment { animation-delay: 0.4s; }
+        .swift-segment { animation-delay: 0.6s; }
+        .csharp-segment { animation-delay: 0.8s; }
+        .js-segment { animation-delay: 1s; }
+
+        @keyframes drawSegment {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Hexagon Skills Chart */
+        .skill-hexagon-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .hexagon-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            justify-items: center;
+            align-items: center;
+            max-width: 400px;
+        }
+
+        .hexagon-skill {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hexagon-skill:hover {
+            transform: scale(1.1);
+        }
+
+        .hexagon-skill:nth-child(1) { grid-column: 2; }
+        .hexagon-skill:nth-child(2) { grid-column: 1; grid-row: 2; }
+        .hexagon-skill:nth-child(3) { grid-column: 3; grid-row: 2; }
+        .hexagon-skill:nth-child(4) { grid-column: 1; grid-row: 3; }
+        .hexagon-skill:nth-child(5) { grid-column: 3; grid-row: 3; }
+
+        .hexagon-shape {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            background: var(--bg-dark);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hexagon-content {
+            transform: rotate(-45deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .hexagon-content i {
+            font-size: 1.5rem;
+        }
+
+        .hexagon-content .skill-percent {
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .csharp-icon {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #239120;
+        }
+
+        .skill-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0%;
+            border-radius: 12px;
+            transition: height 2s ease-in-out;
+            opacity: 0.3;
+        }
+
+        .skill-fill.animate {
+            height: var(--fill-height);
+        }
+
+        .java-fill {
+            background: linear-gradient(to top, #f89820, rgba(248, 152, 32, 0.3));
+        }
+
+        .python-fill {
+            background: linear-gradient(to top, #3776ab, rgba(55, 118, 171, 0.3));
+        }
+
+        .swift-fill {
+            background: linear-gradient(to top, #fa7343, rgba(250, 115, 67, 0.3));
+        }
+
+        .csharp-fill {
+            background: linear-gradient(to top, #239120, rgba(35, 145, 32, 0.3));
+        }
+
+        .javascript-fill {
+            background: linear-gradient(to top, #f7df1e, rgba(247, 223, 30, 0.3));
+        }
+
+        .hexagon-legend {
+            text-align: center;
+        }
+
+        .legend-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.8rem;
+            justify-items: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .java-dot { background: #f89820; }
+        .python-dot { background: #3776ab; }
+        .swift-dot { background: #fa7343; }
+        .csharp-dot { background: #239120; }
+        .javascript-dot { background: #f7df1e; }
+
+        /* Animations for hexagon skills */
+        .hexagon-skill {
+            animation: hexagonFadeIn 0.6s ease-out forwards;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .hexagon-skill:nth-child(1) { animation-delay: 0.1s; }
+        .hexagon-skill:nth-child(2) { animation-delay: 0.2s; }
+        .hexagon-skill:nth-child(3) { animation-delay: 0.3s; }
+        .hexagon-skill:nth-child(4) { animation-delay: 0.4s; }
+        .hexagon-skill:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes hexagonFadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-image {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .contact-icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--bg-dark);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .submit-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-chart-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-element {
+                display: none;
+            }
+
+            .chart-legend {
+                gap: 1rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Profile Section -->
-        <div class="profile">
-            <div class="profile-pic">
-                <img src="your-photo.jpg" alt="Erfan Omidi">
-            </div>
-            <h1>Hello, I am <span>Erfan Omidi</span></h1>
-            <p>Your go-to person for building efficient, user-friendly software solutions.</p>
+    <div class="bg-animation"></div>
+    
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <!-- About Me Section -->
-        <div class="about">
-            <h2>About Me</h2>
-            <div class="about-box">
+    <section id="home" class="hero">
+        <div class="floating-element">
+            <i class="fas fa-code" style="font-size: 2rem; color: var(--primary); opacity: 0.3;"></i>
+        </div>
+        <div class="floating-element">
+            <i class="fas fa-laptop" style="font-size: 2rem; color: var(--secondary); opacity: 0.3;"></i>
+        </div>
+        <div class="floating-element">
+            <i class="fas fa-lightbulb" style="font-size: 2rem; color: var(--accent); opacity: 0.3;"></i>
+        </div>
+        
+        <div class="hero-content">
+            <h1>Erfan Omidi</h1>
+            <p class="subtitle">Software Developer</p>
+            <p class="description">
+                Software Developer with hands-on experience in Java, C#, and Python. 
+                Passionate about developing mobile and desktop applications using modern technologies. 
+                Seeking opportunities to contribute technical skills to innovative software development projects.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#projects" class="cta-button">View My Work</a>
+                <a href="Erfan_Omidi_Resume.pdf" target="_blank" class="cta-button" style="background: linear-gradient(135deg, #06b6d4, #8b5cf6);">
+                    <i class="fas fa-download" style="margin-right: 0.5rem;"></i>Download CV
+                </a>
+                <a href="https://linktr.ee/Erfuun" target="_blank" class="cta-button" style="background: linear-gradient(135deg, #10b981, #06b6d4);">
+                    <i class="fas fa-link" style="margin-right: 0.5rem;"></i>Linktree
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="fade-in">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="profile-card">
+                <div class="profile-image" style="background: none; padding: 0;">
+                    <img src="your-photo.jpg" alt="Erfan Omidi" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid transparent; background: var(--gradient); padding: 4px;">
+                </div>
+                <h3>Software Developer</h3>
+                <p>Montreal, Quebec</p>
+            </div>
+            <div class="about-text">
                 <p>
-                    I’m a Computer Programming student with expertise in Java, Python, and C#. 
-                    I specialize in creating scalable and efficient solutions with a focus on user experience.
-                    With a strong foundation in programming and collaboration skills, I aim to contribute to impactful projects.
+                    I'm a Software Developer with comprehensive experience in Java, C#, and Python, specializing in 
+                    mobile and desktop application development. My technical expertise spans across modern technologies 
+                    including Android Studio, Java Swing, and Swift Playground.
+                </p>
+                <br>
+                <p>
+                    With proficiency in C#, Python, HTML, CSS, JavaScript, and Java, I focus on Object-Oriented Programming, 
+                    algorithms, and UI/UX design. I consistently strive to create efficient, user-friendly applications 
+                    that solve real-world problems.
+                </p>
+                <br>
+                <p>
+                    I bring strong problem-solving skills, collaborative teamwork abilities, and adaptability to every project. 
+                    Fluent in English and Persian with solid French communication skills, I'm actively seeking full-time 
+                    opportunities where I can contribute to innovative software development projects and grow as a developer.
                 </p>
             </div>
         </div>
+    </section>
 
-        <!-- Grid Layout -->
-        <div class="grid">
-            <!-- Left Column -->
-            <div class="left-column">
-                <!-- Contact Section -->
-                <div class="box">
-                    <h3>Contact Me:</h3>
-                    <button onclick="window.location.href='tel:+14387286562'">Call Me!</button>
-                    <button onclick="window.location.href='mailto:erfan_o@yahoo.com'">Email Me!</button>
-                </div>
-
-                <!-- Resume Section -->
-                <div class="box">
-                    <h3>Resume:</h3>
-                    <button onclick="window.location.href='Erfan_Omidi_Resume.pdf'">English Resume</button>
-                </div>
+    <section id="skills" class="fade-in">
+        <h2 class="section-title">Skills & Technologies</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fab fa-java skill-icon"></i>
+                <h3>Programming Languages</h3>
+                <p>Java, C#, Python, Swift, JavaScript, HTML5, CSS3</p>
             </div>
+            <div class="skill-card">
+                <i class="fas fa-mobile-alt skill-icon"></i>
+                <h3>Development Tools</h3>
+                <p>Android Studio, Java Swing, Git, Swift Playground</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-cogs skill-icon"></i>
+                <h3>Core Concepts</h3>
+                <p>Object-Oriented Programming, Algorithms, UI/UX Design</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-users skill-icon"></i>
+                <h3>Professional Skills</h3>
+                <p>Problem-solving, Teamwork, Project Management<br>English, Persian, French</p>
+            </div>
+        </div>
 
-            <!-- Right Column -->
-            <div class="right-column">
-                <!-- Socials Section -->
-                <div class="box">
-                    <h3>Socials:</h3>
-                    <button onclick="window.location.href='https://www.linkedin.com/in/erfan-omidi-84908a255/'">LinkedIn</button>
-                    <button onclick="window.location.href='https://github.com/erffnn'">GitHub</button>
+        <div class="programming-skills">
+            <h3>Programming Language Proficiency</h3>
+            <div class="skills-chart-grid">
+                <div class="skill-bars">
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Java</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress-width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">C#</span>
+                            <span class="skill-percentage">60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress-width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Python</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress-width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-percentage">60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress-width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Swift</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress-width: 80%;"></div>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Projects Section -->
-                <div class="box">
-                    <h3>Projects:</h3>
-                    <button onclick="window.location.href='https://github.com/erffnn/Halloween.Finder'">Halloween Finder</button>
-                    <button onclick="window.location.href='https://github.com/erffnn/Local-Inn-Reservation-system-LIRS'">LIRS Project</button>
+                <div class="skill-hexagon-chart">
+                    <div class="hexagon-container">
+                        <div class="hexagon-skill" data-skill="java">
+                            <div class="hexagon-shape">
+                                <div class="hexagon-content">
+                                    <i class="fab fa-java"></i>
+                                    <span class="skill-percent">85%</span>
+                                </div>
+                            </div>
+                            <div class="skill-fill java-fill"></div>
+                        </div>
+                        
+                        <div class="hexagon-skill" data-skill="python">
+                            <div class="hexagon-shape">
+                                <div class="hexagon-content">
+                                    <i class="fab fa-python"></i>
+                                    <span class="skill-percent">80%</span>
+                                </div>
+                            </div>
+                            <div class="skill-fill python-fill"></div>
+                        </div>
+                        
+                        <div class="hexagon-skill" data-skill="swift">
+                            <div class="hexagon-shape">
+                                <div class="hexagon-content">
+                                    <i class="fab fa-swift"></i>
+                                    <span class="skill-percent">80%</span>
+                                </div>
+                            </div>
+                            <div class="skill-fill swift-fill"></div>
+                        </div>
+                        
+                        <div class="hexagon-skill" data-skill="csharp">
+                            <div class="hexagon-shape">
+                                <div class="hexagon-content">
+                                    <span class="csharp-icon">C#</span>
+                                    <span class="skill-percent">60%</span>
+                                </div>
+                            </div>
+                            <div class="skill-fill csharp-fill"></div>
+                        </div>
+                        
+                        <div class="hexagon-skill" data-skill="javascript">
+                            <div class="hexagon-shape">
+                                <div class="hexagon-content">
+                                    <i class="fab fa-js-square"></i>
+                                    <span class="skill-percent">60%</span>
+                                </div>
+                            </div>
+                            <div class="skill-fill javascript-fill"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="hexagon-legend">
+                        <div class="legend-title">Programming Languages</div>
+                        <div class="legend-grid">
+                            <div class="legend-item">
+                                <div class="legend-dot java-dot"></div>
+                                <span>Java - 85%</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-dot python-dot"></div>
+                                <span>Python - 80%</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-dot swift-dot"></div>
+                                <span>Swift - 80%</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-dot csharp-dot"></div>
+                                <span>C# - 60%</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-dot javascript-dot"></div>
+                                <span>JavaScript - 60%</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section id="projects" class="fade-in">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-ghost"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Halloween Party Finder 🎃</h3>
+                    <p class="project-description">
+                        Android application designed to help users attend or host Halloween parties. 
+                        Features Firebase authentication, data storage, and Google Maps integration for real-time party locations.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/erffnn/Halloween.Finder" target="_blank" class="project-link">GitHub <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Java Swing Interface Redesign</h3>
+                    <p class="project-description">
+                        Redesigned a desktop application UI using Java Swing, focusing on improving user experience 
+                        and code efficiency. Enhanced the interface with modern design principles.
+                    </p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fab fa-swift"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Swift Playground Projects</h3>
+                    <p class="project-description">
+                        Collection of beginner-level apps built in Swift Playground, focusing on fundamental programming concepts 
+                        like loops, conditionals, and algorithmic problem-solving.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="fade-in">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3 style="margin-bottom: 2rem;">Let's Connect</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <span>erfan_o@yahoo.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <span>438-728-6562</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <span>2021 Atwater Ave, Apt 2005<br>Montreal, Quebec H3H2P2</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-briefcase contact-icon"></i>
+                    <span>Open to full-time opportunities</span>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+        </div>
+        <p>&copy; 2025 Erfan Omidi. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate skill bars when they come into view
+                    if (entry.target.querySelector('.skill-progress')) {
+                        const skillBars = entry.target.querySelectorAll('.skill-progress');
+                        skillBars.forEach(bar => {
+                            setTimeout(() => {
+                                bar.classList.add('animate');
+                            }, 200);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navigation background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
+            } else {
+                nav.style.background = 'rgba(15, 23, 42, 0.9)';
+            }
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (name && email && message) {
+                // Simulate form submission
+                const submitBtn = document.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+                
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Thank you for your message! I\'ll get back to you soon.');
+                    this.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 1500);
+            }
+        });
+
+        // Dynamic typing effect for hero
+        const heroTitle = document.querySelector('.hero h1');
+        const titles = ['Erfan Omidi', 'Developer', 'Programmer', 'Problem Solver'];
+        let currentTitle = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const current = titles[currentTitle];
+            
+            if (isDeleting) {
+                heroTitle.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                heroTitle.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === current.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                currentTitle = (currentTitle + 1) % titles.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+
+        // Start typing effect after page load
+        setTimeout(typeEffect, 1000);
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.floating-element');
+            
+            parallax.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Add click effects to cards
+        document.querySelectorAll('.skill-card, .project-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Animate hexagon chart when it comes into view
+        const hexagonChart = document.querySelector('.skill-hexagon-chart');
+        const observerHexagon = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate skill fills
+                    const skillFills = entry.target.querySelectorAll('.skill-fill');
+                    const skillData = {
+                        'java': 85,
+                        'python': 80,
+                        'swift': 80,
+                        'csharp': 60,
+                        'javascript': 60
+                    };
+                    
+                    skillFills.forEach(fill => {
+                        const skillType = fill.classList[1].replace('-fill', '');
+                        const percentage = skillData[skillType];
+                        fill.style.setProperty('--fill-height', percentage + '%');
+                        
+                        setTimeout(() => {
+                            fill.classList.add('animate');
+                        }, 500);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (hexagonChart) {
+            observerHexagon.observe(hexagonChart);
+        }
+    </script>
 </body>
 </html>
