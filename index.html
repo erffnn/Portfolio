@@ -237,6 +237,223 @@
             color: var(--text-muted);
         }
 
+        /* Timeline Section */
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto 0;
+            padding: 0 2rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient);
+            transform: translateX(-50%);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 3rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 0;
+            margin-right: calc(50% + 3rem);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: calc(50% + 3rem);
+            margin-right: 0;
+            text-align: left;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(-50%);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+            color: white;
+            font-size: 1.5rem;
+            border: 4px solid var(--bg-dark);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .timeline-marker:hover {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(99, 102, 241, 0.2);
+        }
+
+        .timeline-year {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .timeline-tag {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--primary);
+        }
+
+        .timeline-item.future .timeline-marker {
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+        }
+
+        .timeline-item.future .timeline-tag {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border-color: #10b981;
+        }
+
+        /* Timeline Mobile Responsive */
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 2rem;
+            }
+
+            .timeline-marker {
+                left: 2rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content {
+                margin-left: 5rem;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            .timeline-tags {
+                justify-content: flex-start;
+            }
+
+            .timeline-container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timeline-content {
+                padding: 1.5rem;
+            }
+
+            .timeline-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .timeline-year {
+                font-size: 1rem;
+            }
+
+            .timeline-tag {
+                font-size: 0.8rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+
+        /* Timeline Animation Effects */
+        .timeline-item[data-year="2017"] .timeline-marker {
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item[data-year="2018-2022"] .timeline-marker {
+            animation-delay: 0.4s;
+        }
+
+        .timeline-item[data-year="2023-2025"] .timeline-marker {
+            animation-delay: 0.6s;
+        }
+
+        .timeline-item[data-year="2025"] .timeline-marker {
+            animation-delay: 0.8s;
+        }
+
+        .timeline-item[data-year="2025+"] .timeline-marker {
+            animation-delay: 1s;
+        }
+
+        @keyframes timelineMarkerPop {
+            0% {
+                transform: translateX(-50%) scale(0);
+                opacity: 0;
+            }
+            80% {
+                transform: translateX(-50%) scale(1.1);
+            }
+            100% {
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .timeline-marker.animate {
+            animation: timelineMarkerPop 0.6s ease-out forwards;
+        }
+
         /* Skills Section */
         .skills-grid {
             display: grid;
@@ -831,6 +1048,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -897,6 +1115,92 @@
                     Fluent in English and Persian with solid French communication skills, I'm actively seeking full-time 
                     opportunities where I can contribute to innovative software development projects and grow as a developer.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="fade-in">
+        <h2 class="section-title">Educational Journey</h2>
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item" data-year="2017">
+                <div class="timeline-marker">
+                    <i class="fas fa-plane"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2017</div>
+                    <h3>🇨🇦 Arrival in Canada</h3>
+                    <p>Started my Canadian journey with English private school education, adapting to a new culture and educational system.</p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">New Beginnings</span>
+                        <span class="timeline-tag">English</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-year="2018-2022">
+                <div class="timeline-marker">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2018-2022</div>
+                    <h3>🇫🇷 French High School Journey</h3>
+                    <p>Completed high school education through the Accueil program, mastering French language skills while building a strong academic foundation.</p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Accueil Program</span>
+                        <span class="timeline-tag">Multilingual</span>
+                        <span class="timeline-tag">Academic Excellence</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-year="2023-2025">
+                <div class="timeline-marker">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2023-2025</div>
+                    <h3>💻 College LaSalle - Computer Science</h3>
+                    <p>Pursuing DEC in Computer Science with focus on programming languages, software development, and modern technologies.</p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Java</span>
+                        <span class="timeline-tag">C#</span>
+                        <span class="timeline-tag">Python</span>
+                        <span class="timeline-tag">Mobile Dev</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-year="2025">
+                <div class="timeline-marker">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-year">June 2025</div>
+                    <h3>🎓 DEC Graduation Achievement</h3>
+                    <p>Completing Computer Science DEC with comprehensive skills in software development and ready to enter the professional world.</p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Achievement</span>
+                        <span class="timeline-tag">Ready to Work</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item future" data-year="2025+">
+                <div class="timeline-marker">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025+</div>
+                    <h3>🚀 Future Career Opportunities</h3>
+                    <p>Seeking full-time software development positions to apply my technical skills and continue growing as a professional developer.</p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Career Growth</span>
+                        <span class="timeline-tag">Innovation</span>
+                        <span class="timeline-tag">Full-time</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1189,11 +1493,24 @@
                             }, 200);
                         });
                     }
+
+                    // Animate timeline items
+                    if (entry.target.classList.contains('timeline-item')) {
+                        const marker = entry.target.querySelector('.timeline-marker');
+                        setTimeout(() => {
+                            marker.classList.add('animate');
+                        }, 300);
+                    }
                 }
             });
         }, observerOptions);
 
         document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Timeline items observer
+        document.querySelectorAll('.timeline-item').forEach(el => {
             observer.observe(el);
         });
 
@@ -1281,7 +1598,7 @@
         });
 
         // Add click effects to cards
-        document.querySelectorAll('.skill-card, .project-card').forEach(card => {
+        document.querySelectorAll('.skill-card, .project-card, .timeline-content').forEach(card => {
             card.addEventListener('click', function() {
                 this.style.transform = 'scale(0.98)';
                 setTimeout(() => {
@@ -1289,6 +1606,44 @@
                 }, 150);
             });
         });
+
+        // Timeline item click effects
+        document.querySelectorAll('.timeline-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                // Create ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.6);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    width: 100px;
+                    height: 100px;
+                    left: -20px;
+                    top: -20px;
+                    pointer-events: none;
+                `;
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
 
         // Animate hexagon chart when it comes into view
         const hexagonChart = document.querySelector('.skill-hexagon-chart');
